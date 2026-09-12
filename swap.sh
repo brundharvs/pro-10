@@ -6,22 +6,26 @@
 # Roll Number:1U24IT135
 # =====================================
 
-# Write your commands beloW
+# Write your commands below
 
-# Create a 1 GB swap file
-sudo fallocate -l 1G /swapfile
+# Disable existing swap
+sudo swapoff /swapfile
 
-# Set correct permissions
+# Remove existing swapfile if present
+sudo rm -f /swapfile
+
+# Create a 1GB swap file using dd
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+
+# Set proper permissions (readable/writable by root only)
 sudo chmod 600 /swapfile
 
-# Format the file as swap
+# Create swap signature on the file
 sudo mkswap /swapfile
 
-# Enable the swap file
+# Activate the swap space
 sudo swapon /swapfile
 
-# Make swap permanent after reboot
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
-# Verify swap is enabled
+# Display the activated swap space
 sudo swapon --show
+
