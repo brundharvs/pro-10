@@ -6,7 +6,7 @@
 # Roll Number:1U24IT135
 # =====================================
 
-# Write your commands beloanswer me
+# Write your commands beloW
 
 # Create a 1 GB swap file
 sudo fallocate -l 1G /swapfile
